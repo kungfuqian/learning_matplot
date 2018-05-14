@@ -103,7 +103,9 @@
 # plt.plot([],[],color='g', label='working', linewidth=5) # 为堆叠的区域添加标签
 # plt.plot([],[],color='c', label='playing', linewidth=5) # 为堆叠的区域添加标签
 #
-# plt.stackplot(days, sleeping, eating, working, playing,colors=['m','c','r','g'])
+# plt.stackplot(days,
+#               sleeping, eating, working, playing,
+#               colors=['m','c','r','g'])
 #
 # plt.xlabel('x')
 # plt.ylabel('y')
@@ -114,27 +116,64 @@
 
 # ------------------ 6. Pie Charts:饼状图 ------------------
 
+# import matplotlib.pyplot as plt
+#
+# days = [1,2,3,4,5]
+#
+# sleeping = [7,5,6,7,8]
+# eating = [2,3,4,2,1]
+# working = [7,8,6,7,2]
+# playing = [8,6,9,4,13]
+#
+# slices = [7,2,2,13]
+# activities = ['sleeping','eating','working','playing']
+#
+# plt.pie(slices,
+#         labels=activities,  # 标签列表
+#         startangle=90,      # 起始角度
+#         shadow=True,        # 是否添加阴影
+#         explode=(0.1,0,0,0),  # 使某个块突出 0.1表示距离
+#         autopct='%1.1f%%')  # 增加百分比
+#
+# # plt.xlabel('x')
+# # plt.ylabel('y')
+# plt.title('Interesting Graph\ncheck it out')    # 加 '\n' 用于分割
+# # plt.legend()    # 当我们有多个 axes时，用legend把图例放在一起
+# plt.show()
+
+
+# ------------------ 7. loading data from files:从文件中加载数据 ------------------
+
 import matplotlib.pyplot as plt
 
-days = [1,2,3,4,5]
+# ----- method 1 -----
+'''
+import csv
 
-sleeping = [7,5,6,7,8]
-eating = [2,3,4,2,1]
-working = [7,8,6,7,2]
-playing = [8,6,9,4,13]
+x = []
+y = []
 
-slices = [7,2,2,13]
-activities = ['sleeping','eating','working','playing']
 
-plt.pie(slices,
-        labels=activities,  # 标签列表
-        startangle=90,      # 起始角度
-        shadow=True,        # 是否添加阴影
-        explode=(0.1,0,0,0),  # 使某个块突出 0.1表示距离
-        autopct='%1.1f%%')  # 增加百分比
+with open('lession6.txt','r') as csvfile:
+        plots = csv.reader(csvfile, delimiter=',')
+        for row in plots:
+                x.append(int(row[0]))
+                y.append(int(row[1]))
 
-# plt.xlabel('x')
-# plt.ylabel('y')
+plt.plot(x,y, label='Loaded from file!')
+'''
+
+# ----- method 2 -----
+import numpy as np
+
+x, y = np.loadtxt('lession6.txt', # 加载文件名称,不一定为txt文档,只需文本类型即可
+                  delimiter=',',  # 以 ‘,' 符号为分隔点
+                  unpack=True)    # 解包成 x,y两个包
+
+plt.plot(x,y, label='Loaded from file!')
+
+plt.xlabel('x')
+plt.ylabel('y')
 plt.title('Interesting Graph\ncheck it out')    # 加 '\n' 用于分割
-# plt.legend()    # 当我们有多个 axes时，用legend把图例放在一起
+plt.legend()    # 当我们有多个 axes时，用legend把图例放在一起
 plt.show()
