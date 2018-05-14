@@ -89,24 +89,24 @@
 
 # ------------------ 5. stack plots:堆叠式图区 ------------------
 
-# import matplotlib.pyplot as plt
-#
-# days = [1,2,3,4,5]
-#
-# sleeping = [7,5,6,7,8]
-# eating = [2,3,4,2,1]
-# working = [7,8,6,7,2]
-# playing = [8,6,9,4,13]
-#
-# plt.plot([],[],color='m', label='sleeping', linewidth=5) # 为堆叠的区域添加标签
-# plt.plot([],[],color='r', label='eating', linewidth=5) # 为堆叠的区域添加标签
-# plt.plot([],[],color='g', label='working', linewidth=5) # 为堆叠的区域添加标签
-# plt.plot([],[],color='c', label='playing', linewidth=5) # 为堆叠的区域添加标签
-#
-# plt.stackplot(days, sleeping, eating, working, playing,colors=['m','c','r','g'])
-#
-# plt.xlabel('x')
-# plt.ylabel('y')
-# plt.title('Interesting Graph\ncheck it out')    # 加 '\n' 用于分割
-# plt.legend()    # 当我们有多个 axes时，用legend把图例放在一起
-# plt.show()
+import matplotlib.pyplot as plt
+
+days = [1,2,3,4,5]
+
+sleeping = [7,5,6,7,8]
+eating = [2,3,4,2,1]
+working = [7,8,6,7,2]
+playing = [8,6,9,4,13]
+
+plt.plot([],[],color='m', label='sleeping', linewidth=5) # 为堆叠的区域添加标签
+plt.plot([],[],color='r', label='eating', linewidth=5) # 为堆叠的区域添加标签
+plt.plot([],[],color='g', label='working', linewidth=5) # 为堆叠的区域添加标签
+plt.plot([],[],color='c', label='playing', linewidth=5) # 为堆叠的区域添加标签
+
+plt.stackplot(days, sleeping, eating, working, playing,colors=['m','c','r','g'])
+
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Interesting Graph\ncheck it out')    # 加 '\n' 用于分割
+plt.legend()    # 当我们有多个 axes时，用legend把图例放在一起
+plt.show()
